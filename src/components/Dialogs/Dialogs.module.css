@@ -1,0 +1,61 @@
+.main {
+    display: grid;
+    grid-template-columns: 2fr 0.1fr 9.9fr;
+}
+
+.dialogsItem {
+    padding: 0 20px;
+}
+
+.dialogsItem .active {
+    color: gold;
+}
+
+.dialog {
+    position: relative;
+    margin: 20px 10px;
+    font-size: 14px;
+    color: aqua;
+    opacity: 0.5;
+}
+
+.dialog:before {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: -11px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.line {
+    margin: auto;
+    width: 2px;
+    height: 30vh;
+    background-color: #fff;
+    opacity: 0.3;
+    border-radius: 50%;
+}
+
+.messagesItem {
+    padding: 10px 20px;
+}
+
+.message {
+    margin: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+.dialog a {
+    color: white;
+    text-decoration: none;
+}
+
+.dialog .activeLink {
+    color: black;
+}

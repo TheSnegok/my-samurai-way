@@ -1,0 +1,28 @@
+.post {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    background-color: #e7444c86;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 1em;
+}
+
+.ava {
+    border: 2px greenyellow solid;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 15px;
+}
+
+.message {
+    padding: 5px;
+    letter-spacing: 1px;
+}
+
+.likes {
+    margin: auto;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+

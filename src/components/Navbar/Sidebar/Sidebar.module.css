@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+}
+
+.ava {
+    width: 10px;
+}
+
+.name {
+    font: 10px sans-serif;
+}
+
