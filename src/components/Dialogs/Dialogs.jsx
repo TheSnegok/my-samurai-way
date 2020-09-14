@@ -3,13 +3,49 @@ import s from './Dialogs.module.css';
 import DialogsItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
 import { Redirect } from 'react-router-dom';
+import { Formik, Field } from 'formik';
+import { Textarea } from '../common/FormsControl/FormsControls';
 
 const MessageForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <textarea name={'message'} component={'textarea'} cols="100" rows="5" />
-            <button onClick={props.addMessageActionCreator}>Send message</button>
-        </form>
+        <Formik initialValues={{
+            message: ''
+        }}
+            onSubmit={(values) => {
+                props.onSubmit(values);
+            }}
+            validate={(values) => {
+					let errors = {};
+					if(!values.message) {
+						errors.errorText = 'Values is null';
+					} 
+					console.log(errors.message);
+					if (values.message.length > 5) {
+						errors.errorText = `Max length is 5`;
+					}
+					// errors.errorText = required(values);
+					// if(!errors.errorText) {
+					// 	errors.errorText = maxLengthCreator10(values);
+					// }
+					return errors;
+				}}>
+            {({
+                values,
+                handleChange,
+                handleSubmit,
+                errors
+            }) => (
+                    <form onSubmit={handleSubmit}>
+                        <Field name='message'
+                        component={Textarea} 
+                        onChange={handleChange} 
+                        value={values.message}
+                        errors={errors.errorText}
+                        cols="100" rows="5" />
+                        <button type='submit'>Send message</button>
+                    </form>
+                )}
+        </Formik>
     )
 }
 

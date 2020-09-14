@@ -1,9 +1,9 @@
 export const required = (value) => {
-    if (value)  return console.log('Values is null');
-    return undefined;
+    if(value.newPostText) return undefined;
+    return 'Values is null';
 }
 
 export const maxLengthCreator = (maxLength) => (value) => {
-    if (value.length > maxLength) return `Max length is ${maxLength} symbols`;
+    if (value.newPostText.length > maxLength)  return `Max length is 5`;
     return undefined;
 }

@@ -1,9 +1,24 @@
 import React from 'react'
+import f from './FormsControls.module.css' 
 
-export const Textarea = (props) => {
+const FormsControls = (props) => {
     return (
-        <div>
-            <textarea name='newPostText' {...props} />
+        <div className={f.formControl}>
+            <div className={f.alarm + " " + (props.errors ? f.error : '')}>
+                {props.children}
+            </div>
+            <span className={f.errors}>{props.errors ? props.errors : null}</span>
         </div>
     )
 }
+
+export const Textarea = ({form, ...props}) => {
+    return <FormsControls {...props}><textarea name={props.field.name} {...props} /></FormsControls>
+}
+
+export const Input = ({form, ...props}) => {
+    return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
+}
+
+
+

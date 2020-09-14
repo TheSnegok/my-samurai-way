@@ -1,0 +1,9 @@
+.formControl .alarm.error textarea,
+.formControl .alarm.error input {
+    border: 2px solid red;
+}
+
+.formControl .errors {
+    color: red;
+}
+
