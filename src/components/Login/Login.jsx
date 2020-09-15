@@ -35,16 +35,32 @@ const LoginForm = (props) => {
         onSubmit={(actions) => {
             props.onLogin(actions)
         }}>
-            { ({
-                handleChange,
-                handleSubmit,
-                values,
-                errors
-            }) => (
+        { ({
+            handleBlur,
+            handleChange,
+            handleSubmit,
+            values,
+            errors
+        }) => (
             <form onSubmit={handleSubmit}>
-                <Field onChange={handleChange} placeholder={'Email'} name='email' component={Input} value={values.email} errors={errors.email} />
-                <Field onChange={handleChange} placeholder={'Password'} name='password' component={Input} type='password' autoComplete="off"  value={values.password} errors={errors.password} />
-                <input onChange={handleChange} type='checkbox' name='rememberMe'  value={values.rememberMe} /> remember me
+                <Field onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder={'Email'} 
+                        name='email' 
+                        component={Input} 
+                        value={values.email} 
+                        errors={errors.email} />
+                <Field onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder={'Password'} 
+                        name='password' component={Input} 
+                        type='password' autoComplete="off"  
+                        value={values.password} 
+                        errors={errors.password} />
+                <input onChange={handleChange} 
+                        type='checkbox' 
+                        name='rememberMe'  
+                        value={values.rememberMe} /> remember me
             <div>
                 <button type='submit'>Sign In</button>
             </div>

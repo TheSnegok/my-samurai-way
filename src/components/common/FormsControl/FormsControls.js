@@ -17,6 +17,7 @@ export const Textarea = ({form, ...props}) => {
 }
 
 export const Input = ({form, ...props}) => {
+    console.log('Visited fields', form.touched);
     return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
 }
 
