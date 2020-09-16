@@ -33,7 +33,8 @@ const MessageForm = (props) => {
                 values,
                 handleChange,
                 handleSubmit,
-                errors
+                errors,
+                touched
             }) => (
                     <form onSubmit={handleSubmit}>
                         <Field name='message'
@@ -41,6 +42,7 @@ const MessageForm = (props) => {
                         onChange={handleChange} 
                         value={values.message}
                         errors={errors.errorText}
+                        touched={touched.message}
                         cols="100" rows="5" />
                         <button type='submit'>Send message</button>
                     </form>

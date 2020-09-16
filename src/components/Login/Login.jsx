@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Field } from 'formik'
+import { Formik, Field, Form } from 'formik'
 import { Input } from '../common/FormsControl/FormsControls'
 import { connect } from 'react-redux'
 import {login} from '../../redux/authReducer'
@@ -38,33 +38,33 @@ const LoginForm = (props) => {
         { ({
             handleBlur,
             handleChange,
-            handleSubmit,
             values,
-            errors
+            errors,
+            touched
         }) => (
-            <form onSubmit={handleSubmit}>
+            <Form>
                 <Field onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder={'Email'} 
-                        name='email' 
-                        component={Input} 
+                        placeholder={'Email'}
+                        name='email' component={Input}
                         value={values.email} 
-                        errors={errors.email} />
+                        errors={errors.email}
+                        touched={touched.email} />
                 <Field onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder={'Password'} 
-                        name='password' component={Input} 
+                        name='password' component={Input}
                         type='password' autoComplete="off"  
                         value={values.password} 
-                        errors={errors.password} />
-                <input onChange={handleChange} 
-                        type='checkbox' 
+                        errors={errors.password}
+                        touched={touched.password} />
+                <Field onChange={handleChange}
                         name='rememberMe'  
-                        value={values.rememberMe} /> remember me
+                        type='checkbox' /> remember me
             <div>
                 <button type='submit'>Sign In</button>
             </div>
-        </form>
+        </Form>
             )}
         </Formik>
     )

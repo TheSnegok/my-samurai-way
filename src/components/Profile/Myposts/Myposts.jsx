@@ -35,7 +35,9 @@ let FormMyPosts = (props) => {
 				values,
 				handleChange,
 				handleSubmit,
-				errors
+				errors,
+				touched,
+				getFieldProps
 			}) => (
 					<form onSubmit={handleSubmit}>
 						<div>
@@ -44,7 +46,8 @@ let FormMyPosts = (props) => {
 							placeholder={'Write new post...'} 
 							onChange={handleChange} 
 							value={values.newPostText}
-							errors={errors.errorText} />
+							errors={errors.errorText}
+							touched={touched.newPostText} />
 						</div>
 						<div>
 							<button type="submit">Add post</button>

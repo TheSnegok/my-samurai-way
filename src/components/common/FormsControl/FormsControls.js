@@ -7,7 +7,7 @@ const FormsControls = (props) => {
             <div className={f.alarm + " " + (props.errors ? f.error : '')}>
                 {props.children}
             </div>
-            <span className={f.errors}>{props.errors ? props.errors : null}</span>
+            <span className={f.errors}>{props.errors && props.touched  ? props.errors : null}</span>
         </div>
     )
 }
@@ -17,7 +17,6 @@ export const Textarea = ({form, ...props}) => {
 }
 
 export const Input = ({form, ...props}) => {
-    console.log('Visited fields', form.touched);
     return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
 }
 
