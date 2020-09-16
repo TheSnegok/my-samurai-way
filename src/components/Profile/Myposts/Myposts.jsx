@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Myposts.module.css';
 import Post from './Post/Post';
-import { Field, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import { Textarea } from '../../common/FormsControl/FormsControls';
 // import { required, maxLengthCreator } from '../../../utils/validators/validators';
 
@@ -34,17 +34,17 @@ let FormMyPosts = (props) => {
 			{({
 				values,
 				handleChange,
-				handleSubmit,
+				handleBlur,
 				errors,
-				touched,
-				getFieldProps
+				touched
 			}) => (
-					<form onSubmit={handleSubmit}>
+					<Form>
 						<div>
 							<Field name='newPostText'
 							component={Textarea} 
 							placeholder={'Write new post...'} 
 							onChange={handleChange} 
+							onBlur={handleBlur}
 							value={values.newPostText}
 							errors={errors.errorText}
 							touched={touched.newPostText} />
@@ -52,7 +52,7 @@ let FormMyPosts = (props) => {
 						<div>
 							<button type="submit">Add post</button>
 						</div>
-					</form>
+					</Form>
 			)}
 		 </Formik>
 	)

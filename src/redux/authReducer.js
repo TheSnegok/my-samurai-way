@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: {id, email, login} })
+export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: {id, email, login, isAuth} })
 export const getAuthMe = () => {
     return (dispatch) => {
         authAPI.me().then(response => {
@@ -41,7 +41,7 @@ export const login = (email, password, rememberMe) => {
             if (response.resultCode === 0) {
                 dispatch(getAuthMe());
             } else {
-
+                alert('Incorrect email or password!');
             }
         });
     }

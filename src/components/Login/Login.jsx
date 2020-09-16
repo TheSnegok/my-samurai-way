@@ -33,7 +33,7 @@ const LoginForm = (props) => {
             return errors;
         }}
         onSubmit={(actions) => {
-            props.onLogin(actions)
+            props.onLogin(actions);
         }}>
         { ({
             handleBlur,

@@ -2,12 +2,13 @@ import React from 'react'
 import f from './FormsControls.module.css' 
 
 const FormsControls = (props) => {
+    let hasError = props.errors && props.touched; 
     return (
         <div className={f.formControl}>
-            <div className={f.alarm + " " + (props.errors ? f.error : '')}>
+            <div className={f.alarm + " " + ( hasError ? f.error : '')}>
                 {props.children}
             </div>
-            <span className={f.errors}>{props.errors && props.touched  ? props.errors : null}</span>
+            <span className={f.errors}>{ hasError ? props.errors : null}</span>
         </div>
     )
 }
