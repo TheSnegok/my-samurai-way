@@ -39,16 +39,14 @@ let FormMyPosts = (props) => {
 				touched
 			}) => (
 					<Form>
-						<div>
-							<Field name='newPostText'
-							component={Textarea} 
-							placeholder={'Write new post...'} 
-							onChange={handleChange} 
-							onBlur={handleBlur}
-							value={values.newPostText}
-							errors={errors.errorText}
-							touched={touched.newPostText} />
-						</div>
+						<Field onChange={handleChange} 
+								onBlur={handleBlur}
+								name='newPostText'
+								component={Textarea} 
+								placeholder={'Write new post...'} 
+								value={values.newPostText}
+								errors={errors.errorText}
+								touched={touched.newPostText} />
 						<div>
 							<button type="submit">Add post</button>
 						</div>

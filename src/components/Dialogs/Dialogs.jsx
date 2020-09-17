@@ -3,7 +3,7 @@ import s from './Dialogs.module.css';
 import DialogsItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
 import { Redirect } from 'react-router-dom';
-import { Formik, Field } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { Textarea } from '../common/FormsControl/FormsControls';
 
 const MessageForm = (props) => {
@@ -32,20 +32,21 @@ const MessageForm = (props) => {
             {({
                 values,
                 handleChange,
-                handleSubmit,
+                handleBlur,
                 errors,
                 touched
             }) => (
-                    <form onSubmit={handleSubmit}>
+                    <Form>
                         <Field name='message'
                         component={Textarea} 
-                        onChange={handleChange} 
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         value={values.message}
                         errors={errors.errorText}
                         touched={touched.message}
                         cols="100" rows="5" />
                         <button type='submit'>Send message</button>
-                    </form>
+                    </Form>
                 )}
         </Formik>
     )

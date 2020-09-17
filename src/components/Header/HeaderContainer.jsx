@@ -1,14 +1,10 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { getAuthMe, logout } from '../../redux/authReducer';
+import { logout } from '../../redux/authReducer';
 import Preloader from '../common/Preloader/Preloader';
 
 class HeaderComponent extends React.Component {
-
-    componentDidMount() {
-        this.props.getAuthMe();
-    }
 
     render() {
         return (
@@ -28,4 +24,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, { getAuthMe, logout })(HeaderComponent);
+export default connect(mapStateToProps, { logout })(HeaderComponent);
