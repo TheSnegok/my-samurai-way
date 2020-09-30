@@ -3,11 +3,8 @@ import s from './Myposts.module.css';
 import Post from './Post/Post';
 import { Field, Form, Formik } from 'formik';
 import { Textarea } from '../../common/FormsControl/FormsControls';
-// import { required, maxLengthCreator } from '../../../utils/validators/validators';
 
 let FormMyPosts = (props) => {
-
-	// const maxLengthCreator10 = maxLengthCreator(5);
 
 	return (
 		<Formik initialValues={{
@@ -21,10 +18,6 @@ let FormMyPosts = (props) => {
 					if (values.newPostText.length > 5) {
 						errors.errorText = `Max length is 5`;
 					}
-					// errors.errorText = required(values);
-					// if(!errors.errorText) {
-					// 	errors.errorText = maxLengthCreator10(values);
-					// }
 					return errors;
 				}}
 				onSubmit={(values) => {
@@ -46,7 +39,7 @@ let FormMyPosts = (props) => {
 								placeholder={'Write new post...'} 
 								value={values.newPostText}
 								errors={errors.errorText}
-								touched={touched.newPostText} />
+								touched={touched} />
 						<div>
 							<button type="submit">Add post</button>
 						</div>
@@ -56,7 +49,9 @@ let FormMyPosts = (props) => {
 	)
 }
 
-const Myposts = (props) => {
+
+const Myposts = React.memo((props) => {
+	console.log('Render');
 	let postElement = props.mas.map(post => <Post key={post.id} message={post.text} likescount={post.likescount} />);
 
 	let onAddPost = (values) => {
@@ -75,6 +70,6 @@ const Myposts = (props) => {
 			</div>
 		</div>
 	);
-}
+});
 
 export default Myposts;

@@ -1,3 +1,4 @@
+import { Field } from 'formik';
 import React from 'react'
 import f from './FormsControls.module.css' 
 
@@ -21,5 +22,14 @@ export const Input = ({form, ...props}) => {
     return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
 }
 
-
-
+export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched = '', type = '', autoComplete='') => (
+    <Field onChange={handleChange}
+        onBlur={handleBlur}
+        placeholder={placeholder}
+        name={name} component={Input}
+        value={values} 
+        errors={errors}
+        touched={touched} 
+        autoComplete={autoComplete}
+        type={type}/>
+)

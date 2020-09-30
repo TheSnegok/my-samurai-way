@@ -1,6 +1,6 @@
 import React from 'react'
-import { Formik, Field, Form } from 'formik'
-import { Input } from '../common/FormsControl/FormsControls'
+import { Formik, Form } from 'formik'
+import { CreateField } from '../common/FormsControl/FormsControls'
 import { connect } from 'react-redux'
 import {login} from '../../redux/authReducer'
 import { Redirect } from 'react-router-dom'
@@ -26,10 +26,6 @@ const LoginForm = (props) => {
             if (values.password.length > 40) {
                 errors.password = `Max length is 40`;
             }
-            // errors.errorText = required(values);
-            // if(!errors.errorText) {
-            // 	errors.errorText = maxLengthCreator10(values);
-            // }
             return errors;
         }}
         onSubmit={(actions) => {
@@ -43,24 +39,9 @@ const LoginForm = (props) => {
             touched
         }) => (
             <Form>
-                <Field onChange={handleChange}
-                        onBlur={handleBlur}
-                        placeholder={'Email'}
-                        name='email' component={Input}
-                        value={values.email} 
-                        errors={errors.email}
-                        touched={touched.email} />
-                <Field onChange={handleChange}
-                        onBlur={handleBlur}
-                        placeholder={'Password'} 
-                        name='password' component={Input}
-                        type='password' autoComplete="off"  
-                        value={values.password} 
-                        errors={errors.password}
-                        touched={touched.password} />
-                <Field onChange={handleChange}
-                        name='rememberMe'  
-                        type='checkbox' /> remember me
+                {CreateField(handleChange, handleBlur, 'Email', 'email', values.email, errors.email, touched.email)}
+                {CreateField(handleChange, handleBlur, 'Password', 'password', values.password, errors.password, touched.password, 'password')}
+                {CreateField(handleChange, handleBlur, '', 'rememberMe', '', '', '', 'checkbox', 'off')}
             <div>
                 <button type='submit'>Sign In</button>
             </div>

@@ -19,14 +19,9 @@ const MessageForm = (props) => {
 					if(!values.message) {
 						errors.errorText = 'Values is null';
 					} 
-					console.log(errors.message);
 					if (values.message.length > 5) {
 						errors.errorText = `Max length is 5`;
 					}
-					// errors.errorText = required(values);
-					// if(!errors.errorText) {
-					// 	errors.errorText = maxLengthCreator10(values);
-					// }
 					return errors;
 				}}>
             {({
@@ -43,7 +38,7 @@ const MessageForm = (props) => {
                         onBlur={handleBlur}
                         value={values.message}
                         errors={errors.errorText}
-                        touched={touched.message}
+                        touched={touched}
                         cols="100" rows="5" />
                         <button type='submit'>Send message</button>
                     </Form>
