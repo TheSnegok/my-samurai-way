@@ -9,12 +9,12 @@ const Header = (props) => {
     }
 
     return (
-        <header className={s.header}>
+        <header className={s.header}> 
             <img src='https://www.freelogodesign.org/Content/img/logo-ex-7.png' alt='alt' />
             <div className={s.loginBlock}>
                 {props.isAuth 
-                ? <div>{props.login} - <button onClick={logoutCLick}>Log out</button></div> 
-                : <NavLink to='/login'>Login</NavLink>
+                ? <div className={s.login}><button className={s.buttonLogout} onClick={logoutCLick}>{props.login}</button></div> 
+                : <NavLink className={s.logout} to='/login'>Login</NavLink>
                 }
             </div>
         </header>

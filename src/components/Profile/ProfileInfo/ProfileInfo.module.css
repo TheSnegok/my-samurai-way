@@ -1,3 +1,42 @@
+.mainInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .lookJob {
-    width: 30%;
+    max-width: 40%;
+}
+
+.notlookJob {
+    max-width: 40%;
+}
+
+.profileImage {
+    padding-left: 5%;
+    text-align: center;
+}
+
+.profileImage img {
+    max-width: 300px;
+    border-radius: 50%;
+}
+
+.info {
+    padding: 5% 0 0 5%;
+    font-family: Aesthetic;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.contacts {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.contacts_blocks {
+    text-align: center;
+}
+
+.icons {
+    width: 20px;
 }

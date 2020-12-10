@@ -15,15 +15,15 @@ const MessageForm = (props) => {
                 props.onSubmit(values);
             }}
             validate={(values) => {
-					let errors = {};
-					if(!values.message) {
-						errors.errorText = 'Values is null';
-					} 
-					if (values.message.length > 5) {
-						errors.errorText = `Max length is 5`;
-					}
-					return errors;
-				}}>
+                let errors = {};
+                if (!values.message) {
+                    errors.errorText = 'Values is null';
+                }
+                if (values.message.length > 5) {
+                    errors.errorText = `Max length is 5`;
+                }
+                return errors;
+            }}>
             {({
                 values,
                 handleChange,
@@ -33,13 +33,13 @@ const MessageForm = (props) => {
             }) => (
                     <Form>
                         <Field name='message'
-                        component={Textarea} 
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.message}
-                        errors={errors.errorText}
-                        touched={touched}
-                        cols="100" rows="5" />
+                            component={Textarea}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.message}
+                            errors={errors.errorText}
+                            touched={touched}
+                            cols="100" rows="5" />
                         <button type='submit'>Send message</button>
                     </Form>
                 )}
@@ -58,16 +58,21 @@ const Dialogs = (props) => {
     if (!props.isAuth) return <Redirect to='/Login' />;
 
     return (
-        <div className={s.main}>
-            <div className={s.dialogsItem}>
-                <DialogsItem dialogs={dialogs} />
-            </div>
-            <div className={s.line}></div>
-            <div className={s.messagesItem}>
-                {messages}
-                <MessageForm onSubmit={addMessageActionCreator} />
+        <div>
+            <h1 className={s.nameComponent}>Messages</h1>
+			<hr/>
+            <div className={s.main}>
+                <div className={s.dialogsItem}>
+                    <DialogsItem dialogs={dialogs} />
+                </div>
+                <div className={s.line}></div>
+                <div className={s.messagesItem}>
+                    {messages}
+                    <MessageForm onSubmit={addMessageActionCreator} />
+                </div>
             </div>
         </div>
+
     );
 }
 

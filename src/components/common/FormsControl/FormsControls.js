@@ -15,21 +15,22 @@ const FormsControls = (props) => {
 }
 
 export const Textarea = ({form, ...props}) => {
-    return <FormsControls {...props}><textarea name={props.field.name} {...props} /></FormsControls>
+    return <FormsControls {...props}><textarea cols='50' rows='3' className={f.textArea} name={props.field.name} {...props} /></FormsControls>
 }
 
 export const Input = ({form, ...props}) => {
     return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
 }
 
-export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched = '', type = '', autoComplete='') => (
+export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched = '', type = '', autoComplete='', check='') => (
     <Field onChange={handleChange}
         onBlur={handleBlur}
         placeholder={placeholder}
         name={name} component={Input}
-        value={values} 
+        defaultValue={values} 
         errors={errors}
         touched={touched} 
         autoComplete={autoComplete}
-        type={type}/>
+        type={type}
+        />
 )

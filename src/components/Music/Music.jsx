@@ -1,9 +1,11 @@
 import React from 'react';
+import s from './Music.module.css'
 
 const Music = () => {
     return (
         <div>
-            Music
+            <h1 className={s.nameComponent}>Music</h1>
+		    <hr/>
         </div>
     );
 }

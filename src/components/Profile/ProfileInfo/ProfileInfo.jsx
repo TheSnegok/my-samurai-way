@@ -1,29 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
-import notLookingAJob from '../../../assets/images/notLookingAJob.jpg';
-import lookingForAJob from '../../../assets/images/lookingForAJob.jpg';
 import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWIthHooks';
+import avatar from '../../../assets/images/avatar.svg';
+import Contacts from './Contacts/Contacts';
+import Editmode from './Editmode/Editmode'
 
-const ProfileInfo = ({profile, updateStatus, status}) => {
+const ProfileInfo = ({ profile, updateStatus, status, isOwner, savePhoto, setContacts }) => {
 
-	if(!profile) {
-		return(
+	const changeMainImage = (e) => {
+		if (e.target.files.length) {
+			savePhoto(e.target.files[0])
+		}
+	}
+
+	if (!profile) {
+		return (
 			<Preloader />
 		);
-	}   
+	}
+
+	const [editMode, setEditMode] = useState(false);
 
 	return (
 		<div className={s.profileinfo}>
 			<div className={s.descriptionBlock}>
-				<img alt='ava' src={ profile.photos.large ? profile.photos.large : 'https://newsterra.net/upload/catalog/ru/o-chem-govorit-avatarka-profilya-obyasnyayut-psihologi_5ef1a814b8d06.jpg'}/>
-				<ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
-				{profile.lookingForAJob 
-				? <img className={s.lookJob} alt='lookJob' src={lookingForAJob}/>
-				: <img alt='NotlookJob' src={notLookingAJob} />
-			}
-				ava + description
-   			 </div>
+				<div className={s.mainInfo}>
+					<div className={s.profileImage}>
+						<img alt='ava' src={profile.photos.large || avatar} />
+						{isOwner && <input type={'file'} onChange={changeMainImage} />}
+					</div>
+					{editMode ? <Editmode profile={profile} getInfo={() => setEditMode(false)} setContacts={setContacts} /> :
+					<div className={s.info}>
+						<div><b>Name: </b>{profile.fullName}</div>
+						<div><ProfileStatusWithHooks className={s.status} status={status} updateStatus={updateStatus} /></div>
+						<div><b>About me: </b>{profile.aboutMe ? profile.aboutMe : 'No info'}</div>
+						<div><b>Looking for job: </b> {profile.lookingForAJob ? 'true' : 'false'}</div>
+						<div>
+							{profile.lookingForAJob && <div><b>Looking for job descriptions: </b> {profile.lookingForAJobDescription ? profile.lookingForAJobDescription || 'true' : 'false'}</div>}
+							{isOwner && <div><button onClick={() => (setEditMode(true))}>Edit</button></div>}
+							<Contacts profile={profile} />
+						</div>
+					</div>}
+				</div>
+			</div>
 		</div>
 	);
 }
