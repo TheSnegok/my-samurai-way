@@ -5,6 +5,7 @@ import Message from './Message/Message';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import { Textarea } from '../common/FormsControl/FormsControls';
+import MainHeader from '../common/MainHeader/MainHeader';
 
 const MessageForm = (props) => {
     return (
@@ -59,8 +60,7 @@ const Dialogs = (props) => {
 
     return (
         <div>
-            <h1 className={s.nameComponent}>Messages</h1>
-			<hr/>
+            <MainHeader text='Messages' />
             <div className={s.main}>
                 <div className={s.dialogsItem}>
                     <DialogsItem dialogs={dialogs} />

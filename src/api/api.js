@@ -4,7 +4,7 @@ const instance = Axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {
-        "API-KEY": "472b5294-5c7e-44f8-9320-e639c46882de"
+        "API-KEY": "b82cdd61-09a9-4fe6-b106-6fb6eda4e4b5"
     }
 });
 
@@ -52,8 +52,8 @@ export const profileAPI = {
               }
         })
     },
-    setContacts(contacts) {
-        return instance.put(`profile`, { contacts });
+    updateContacts(userId, lookingForAJob, lookingForAJobDescription, fullname, aboutMe, contacts) {
+        return instance.put(`profile`, {userId, lookingForAJob, lookingForAJobDescription, fullname, aboutMe, contacts});
     }
 }
 
@@ -76,4 +76,14 @@ export const authAPI = {
                 return response.data;
             })
     )}
+}
+
+export const newsApi = {
+    getNews() {
+        return(
+            Axios.get('http://newsapi.org/v2/everything?q=bitcoin&from=2020-11-13&sortBy=publishedAt&apiKey=26f45c78fc34438fa9ad786859db0b07').then(response => {
+                return response.data;
+            })
+        )
+    }
 }

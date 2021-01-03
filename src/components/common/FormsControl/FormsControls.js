@@ -22,7 +22,7 @@ export const Input = ({form, ...props}) => {
     return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
 }
 
-export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched = '', type = '', autoComplete='', check='') => (
+export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched = undefined, type = '', autoComplete='') => (
     <Field onChange={handleChange}
         onBlur={handleBlur}
         placeholder={placeholder}

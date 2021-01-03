@@ -82,10 +82,12 @@ export const savePhoto = (file) => async (dispatch) => {
         }
     }
 
-export const setContacts = (contacts) => async (dispatch) => {
-        let response = await profileAPI.setContacts(contacts);
+export const setContacts = (userId, lookingForAJob, lookingForAJobDescription, fullname, aboutMe, contacts) => async (dispatch) => {
+        let response = await profileAPI.updateContacts(userId, lookingForAJob, lookingForAJobDescription, fullname, aboutMe, contacts);
         if (response.data.resultCode === 0) {
-            return dispatch(getUserProfile(response.data));
+            dispatch(getUserProfile(userId));
+        } else {
+            alert('Error ' + response.data.resultCode);
         }
     }
     

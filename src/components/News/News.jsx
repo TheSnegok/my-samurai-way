@@ -1,11 +1,15 @@
 import React from 'react';
-import s from './News.module.css'
+import s from './News.module.css';
+import NewBlock from './NewBlock/NewBlock';
+import Search from './Search/Search';
+import MainHeader from '../common/MainHeader/MainHeader';
 
 const News = () => {
     return (
         <div>
-            <h1 className={s.nameComponent}>News</h1>
-		    <hr/>
+            <MainHeader text='News' />
+            <Search />
+            <NewBlock />
         </div>
     );
 }

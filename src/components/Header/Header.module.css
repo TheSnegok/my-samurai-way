@@ -48,3 +48,26 @@
     border-left: 1px solid;
 }
 
+.buttonLogin {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: .05em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    background: white;
+    border: 1px solid;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+a {
+    text-decoration: none;
+    color: #904C6E;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.buttonLogin:hover {
+    background: #a7e0f0;
+}

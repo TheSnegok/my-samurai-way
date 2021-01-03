@@ -7,10 +7,19 @@ import { FormsErrors } from '../../../common/FormsErrors/FormsErrors';
 const Editmode = ({ profile, getInfo, setContacts }) => {
 
     const socialName = profile.contacts;
+    
 
     const giveInfo = (formData) => {
-        console.log(formData);
-        // setContacts(formData.fullName, formData.aboutMe, formData.lookingForAJob, formData.lookingForAJobDescription, formData.facebook, formData.website, formData.vk, formData.twitter, formData.instagram, formData.youtube, formData.github, formData.mainLink );
+        formData.contacts = {};
+        formData.contacts.facebook = formData.facebook  || '';
+        formData.contacts.website = formData.website || '';
+        formData.contacts.vk = formData.vk || '';
+        formData.contacts.twitter = formData.twitter || '';
+        formData.contacts.instagram = formData.instagram || '';
+        formData.contacts.youtube = formData.youtube || '';
+        formData.contacts.github = formData.github || '';
+        formData.contacts.mainLink = formData.mainLink || '';
+        setContacts(profile.userId, formData.lookingForAJob, formData.lookingForAJobDescription, formData.fullname, formData.aboutMe, formData.contacts);
     }
 
     return (
@@ -24,15 +33,13 @@ const Editmode = ({ profile, getInfo, setContacts }) => {
             }}
                 validate={(values) => {
                     let errors = {};
-                    errors.fullname = '';
                     FormsErrors(values, errors, 'fullname', 10);
                     FormsErrors(values, errors, 'aboutMe', 20);
                     FormsErrors(values, errors, 'lookingForAJobDescription', 40);
                     return errors;
                 }}
                 onSubmit={(actions) => {
-                    console.log(actions);
-                    // giveInfo(actions);
+                    giveInfo(actions);
                 }}>
                 {({
                     handleBlur,
@@ -55,13 +62,13 @@ const Editmode = ({ profile, getInfo, setContacts }) => {
                                 <b>Looking for a job description: </b>{CreateField(handleChange, handleBlur, 'Looking for a job description', 'lookingForAJobDescription', profile.lookingForAJobDescription || '', errors.lookingForAJobDescription, touched.lookingForAJobDescription)}
                             </div>
                             <h3>Contacts: </h3>
-                            {/* {Object.keys(socialName).map(social => {
+                            {Object.keys(socialName).map(social => {
                                 return (
                                     <div key={social}>
                                         <b>{social}</b>{CreateField(handleChange, handleBlur, social, social, socialName.social || '', errors.social, touched.social)}
                                     </div>
                                 )
-                            })} */}
+                            })}
                             <div>
                                 <button type='submit'>Save</button>
                             </div>
