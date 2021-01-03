@@ -6,6 +6,20 @@
     height: 10%;
 }
 
+.prevButton, .nextButton {
+    border-radius: 50%;
+    border: none;
+    padding: 6px 12px;
+    font-size: 20px;
+    line-height: 22px;
+    background: #ddd;
+    text-decoration: none;
+}
+
+.prevButton:hover, .nextButton:hover {
+    background: rgb(138, 138, 138);
+}
+
 .selectedPage {
     font-weight: bold;
     font-size: 14px;
@@ -17,18 +31,25 @@
     border-radius: 10px;
 }
 
+.selectedPage, .otherPage, .otherPage:hover {
+    margin-top: 7px;
+    line-height: 20px;
+    box-shadow: 0px;
+}
+
 .otherPage {
     font-size: 12px;
-    background-color: #ff3b3bbe;
+    background-color: #ff3b3b8a;
     color: #000000;
     width: 40px;
     height: 20px;
     text-align: center;
+    transition: .3s;
 }
 
 .otherPage:hover {
     font-size: 12px;
-    background-color: #fff23bbe;
+    background-color: #fff23b86;
     color: #ffffff;
     width: 40px;
     height: 20px;

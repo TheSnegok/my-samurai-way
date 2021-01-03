@@ -20,8 +20,9 @@ let FormMyPosts = (props) => {
 					}
 					return errors;
 				}}
-				onSubmit={(values) => {
+				onSubmit={(values, actions) => {
 					props.onSubmit(values.newPostText);
+					actions.resetForm();
 				}}
 				>
 			{({

@@ -5,12 +5,11 @@ const SET_NEWS = 'SET_NEWS',
       SET_SEARCH = 'SET_SEARCH';
 
 let initialState = {
-    news: [],
-    country: 'us',
-    search: ''
+    langueges: 'en',
+    themes: 'light'
 };
 
-const newsReducer = (state = initialState, action) => {
+const settingsReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_NEWS: {
             return {
@@ -53,4 +52,4 @@ export const getNewsFromSearch = (search) => async (dispatch) => {
         }
     }
     
-export default newsReducer;
+export default settingsReducer;

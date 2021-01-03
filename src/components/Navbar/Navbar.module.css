@@ -9,6 +9,9 @@
 .item a{
     color: white;
     text-decoration: none;
+    font-family: 'Teko', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
 }
 
 .item a.activeLink {

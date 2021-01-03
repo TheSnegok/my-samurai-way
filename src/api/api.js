@@ -64,9 +64,9 @@ export const authAPI = {
                 return response.data;
             })
     )},
-    login(email, password, rememberMe = false) {
+    login(email, password, rememberMe = false, captcha) {
         return(
-            instance.post(`auth/login`,{email, password, rememberMe}).then(response => { 
+            instance.post(`auth/login`,{email, password, rememberMe, captcha}).then(response => { 
                 return response.data;
             })
     )},
@@ -75,13 +75,27 @@ export const authAPI = {
             instance.delete(`auth/login`).then(response => { 
                 return response.data;
             })
-    )}
+    )},
+    security() {
+        return(
+            instance.get(`/security/get-captcha-url`).then(response => {
+                return response.data;
+            })
+        )
+    }
 }
 
-export const newsApi = {
-    getNews() {
+export const newsAPI = {
+    getNewsFromCountry(country) {
         return(
-            Axios.get('http://newsapi.org/v2/everything?q=bitcoin&from=2020-11-13&sortBy=publishedAt&apiKey=26f45c78fc34438fa9ad786859db0b07').then(response => {
+            Axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=26f45c78fc34438fa9ad786859db0b07`).then(response => {
+                return response.data;
+            })
+        )
+    },
+    getNewsFromSearch(search) {
+        return(
+            Axios.get(`http://newsapi.org/v2/top-headlines?q=${search}&apiKey=26f45c78fc34438fa9ad786859db0b07`).then(response => {
                 return response.data;
             })
         )

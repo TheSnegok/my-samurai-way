@@ -7,7 +7,6 @@ import { FormsErrors } from '../../../common/FormsErrors/FormsErrors';
 const Editmode = ({ profile, getInfo, setContacts }) => {
 
     const socialName = profile.contacts;
-    
 
     const giveInfo = (formData) => {
         formData.contacts = {};

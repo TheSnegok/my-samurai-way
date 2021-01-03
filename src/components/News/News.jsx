@@ -1,15 +1,16 @@
 import React from 'react';
 import s from './News.module.css';
 import NewBlock from './NewBlock/NewBlock';
-import Search from './Search/Search';
 import MainHeader from '../common/MainHeader/MainHeader';
+// import Searcher from '../common/Searcher/Searcher';
 
-const News = () => {
+const News = ({news, setSearch}) => {
     return (
         <div>
             <MainHeader text='News' />
-            <Search />
-            <NewBlock />
+            {/* <Searcher setSearch={setSearch} /> */}
+            <div className={s.place} ></div>
+            {news.map(n => <NewBlock title={n.title} author={n.author} description={n.description} urlToImage={n.urlToImage} key={n.title} />)}
         </div>
     );
 }

@@ -10,7 +10,7 @@ import {
 	unfollow, unfollowSuccess
 } from '../../redux/usersReducer';
 import Preloader from '../common/Preloader/Preloader';
-import Users from './Users';
+const Users = React.lazy(() => import('./Users'));
 
 class UsersContainer extends React.Component {
 

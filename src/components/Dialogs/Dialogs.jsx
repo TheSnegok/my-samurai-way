@@ -6,23 +6,20 @@ import { Redirect } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import { Textarea } from '../common/FormsControl/FormsControls';
 import MainHeader from '../common/MainHeader/MainHeader';
+import { FormsErrors } from '../common/FormsErrors/FormsErrors';
 
 const MessageForm = (props) => {
     return (
         <Formik initialValues={{
             message: ''
         }}
-            onSubmit={(values) => {
+            onSubmit={(values, actions) => {
                 props.onSubmit(values);
+                actions.resetForm();
             }}
             validate={(values) => {
                 let errors = {};
-                if (!values.message) {
-                    errors.errorText = 'Values is null';
-                }
-                if (values.message.length > 5) {
-                    errors.errorText = `Max length is 5`;
-                }
+                FormsErrors(values, errors, 'message', 30);
                 return errors;
             }}>
             {({
@@ -38,7 +35,7 @@ const MessageForm = (props) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.message}
-                            errors={errors.errorText}
+                            errors={errors.message}
                             touched={touched}
                             cols="100" rows="5" />
                         <button type='submit'>Send message</button>

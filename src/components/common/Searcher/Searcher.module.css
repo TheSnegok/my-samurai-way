@@ -1,0 +1,40 @@
+.searcher {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    width: 70%;
+    justify-content: center;
+}
+
+.searcher input {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    height: 100%;
+    background: #f1f1f1;
+    cursor: default;
+}
+
+.searcher button {
+    float: left;
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    right: 227px;
+    top: -1px;
+    padding: 10px;
+    background: grey;
+    border: 1px solid #2196F3;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+.searcher button::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/images/search.svg');
+    background-size: 100% 100%;
+}

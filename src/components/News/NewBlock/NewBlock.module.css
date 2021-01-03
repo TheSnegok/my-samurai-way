@@ -1,0 +1,26 @@
+.block {
+    padding: 10px 20px;
+    max-width: 70vw;
+    border: 1px solid greenyellow;
+    border-bottom: none;
+}
+
+.block:last-child {
+    border-bottom: 1px solid greenyellow;
+}
+
+.urlToImage {
+    width: 95%;
+}
+
+.img {
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Jura', sans-serif;
+}

@@ -7,7 +7,7 @@ import MainHeader from '../common/MainHeader/MainHeader';
 
 const Login = (props) => {
     let onLogin = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe);
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
 
     if (props.isAuth) {
@@ -17,13 +17,14 @@ const Login = (props) => {
     return (
         <div>
             <MainHeader text='Login' />
-            <LoginForm onLogin={onLogin} />
+            <LoginForm onLogin={onLogin} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 })
 
 export default connect(mapStateToProps, { login })(Login);

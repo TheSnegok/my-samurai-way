@@ -1,7 +1,7 @@
 import React from 'react';
-import MainHeader from '../common/MainHeader/MainHeader';
 import Paginator from '../common/Paginator/Paginator';
 import User from './User';
+import MainHeader from '../common/MainHeader/MainHeader';
 
 let Users = ({totalUsersCount, onPageChenged, currentPage, pageSize, users, ...props}) => {
     return (

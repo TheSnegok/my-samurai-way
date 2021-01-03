@@ -40,11 +40,15 @@
 }
 
 .messagesItem {
-    padding: 10px 20px;
+    padding: 5px 10px;
 }
 
 .message {
     margin: 10px;
+}
+
+.message:nth-of-type(odd) {
+    text-align: right;
 }
 
 .dialog a {

@@ -1,0 +1,8 @@
+.nameComponent {
+    margin: 0;
+    padding: 0.5vw 3vw;
+    font-family: 'Teko', sans-serif;
+    font-size: 40px;
+    line-height: 38px;
+    letter-spacing: 2px;
+}

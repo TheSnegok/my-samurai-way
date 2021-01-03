@@ -6,7 +6,7 @@ const FormsControls = (props) => {
     let hasError = props.errors && props.touched; 
     return (
         <div className={f.formControl}>
-            <div className={f.alarm + " " + ( hasError ? f.error : '')}>
+            <div className={f.alarm + " " + ( hasError ? f.error : null)}>
                 {props.children}
             </div>
             <span className={f.errors}>{ hasError ? props.errors : null}</span>
@@ -22,15 +22,16 @@ export const Input = ({form, ...props}) => {
     return <FormsControls {...props}><input name={props.field.name} {...props} /></FormsControls>
 }
 
-export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched = undefined, type = '', autoComplete='') => (
+export const CreateField = (handleChange, handleBlur, placeholder, name, values = '', errors = '', touched, type = '', autoComplete='') => (
     <Field onChange={handleChange}
         onBlur={handleBlur}
         placeholder={placeholder}
         name={name} component={Input}
         defaultValue={values} 
         errors={errors}
-        touched={touched} 
+        touched={touched ? 1 : 0} 
         autoComplete={autoComplete}
         type={type}
+        className={name}
         />
 )

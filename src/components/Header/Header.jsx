@@ -6,6 +6,7 @@ const Header = (props) => {
 
     let logoutCLick = () => {
         props.logout();
+        alert('Reload page or click on \'login\'')
     }
 
     return (
@@ -13,8 +14,10 @@ const Header = (props) => {
             <img src='https://www.freelogodesign.org/Content/img/logo-ex-7.png' alt='alt' />
             <div className={s.loginBlock}>
                 {props.isAuth 
-                ? <div className={s.login}><button className={s.buttonLogout} onClick={logoutCLick}>{props.login}</button></div> 
-                : <NavLink className={s.logout} to='/login'><button className={s.buttonLogin}>Login</button></NavLink>
+                ? <div className={s.login}>
+                        <button className={s.buttonLogout} onClick={logoutCLick}>{props.login}</button>
+                </div> 
+                : <NavLink to='/login'><button className={s.buttonLogin}>Login</button></NavLink>
                 }
             </div>
         </header>
